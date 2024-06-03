@@ -1,2 +1,2 @@
-# SmartHome-Capstone
-JMU IT Capstone For a SmartHome Application 
+# SmartHome-Assistant
+Vocal Assistant for Smart Home Capstone
