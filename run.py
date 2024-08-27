@@ -2,6 +2,7 @@ import transcribe
 import python_weather
 import asyncio
 import os
+import 
 
 
 global query, splitList, module
@@ -28,3 +29,4 @@ async def getWeather():
         weather = await client.get('New York')
         print(weather.temperature)
         return weather.forecast
+
