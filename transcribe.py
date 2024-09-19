@@ -29,15 +29,18 @@ def windows_transcribe():
 
 # For Linux
 
+print(sd.query_devices())
 # Variables
 freq = 44100
 duration = 5
-sd.default.device = 23
+sd.default.device = 16
 model = "base"
+
+
 
 def linux_transcribe():
     # Init AI
-    model = whisper.load_model(model)
+    model = whisper.load_model("base")
 
     # Getting Audio
     recording = sd.rec(int(duration * freq), samplerate=None, channels=2)
@@ -52,5 +55,4 @@ def linux_transcribe():
 
     result = model.transcribe("testing.wav")
     print(result["text"])
-    return result
-
+    return result["text"]

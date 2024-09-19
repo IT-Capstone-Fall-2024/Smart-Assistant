@@ -4,3 +4,4 @@ setuptools
 wavio
 sounddevice
 tts
+paho-mqtt

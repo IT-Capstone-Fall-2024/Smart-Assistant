@@ -1,24 +1,31 @@
 import transcribe
+import modules
 import python_weather
 import asyncio
 import os
-import 
+import paho.mqtt.client as mqtt
+
 
 
 global query, splitList, module
 
+
+
 def get_query():
-    query = linux_transcribe()
+    global query 
+    query = transcribe.linux_transcribe()
 
 def splitAndID():
+    global query, module
     splitList = query.split()
-    if (light in splitList) or (lights in splitList):
+    if ("light" in splitList) or ("lights" in splitList):
         module = "light"
-    if (temperature in splitList) or (temp in splitList):
+        print("light")
+    if ("temperature" in splitList) or ("temp" in splitList):
         module = "temp"
-    if (door in splitList) or (lock in splitList):
+    if ("door" in splitList) or ("lock" in splitList):
         module = "lock"
-    if (weather in splitList):
+    if ("weather" in splitList):
         module = "weather"
         getWeather()
     
@@ -30,3 +37,6 @@ async def getWeather():
         print(weather.temperature)
         return weather.forecast
 
+get_query()
+splitAndID()
+print(query + module)
