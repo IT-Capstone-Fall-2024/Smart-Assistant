@@ -33,8 +33,7 @@ print(sd.query_devices())
 # Variables
 freq = 44100
 duration = 5
-sd.default.device = 16
-model = "base"
+sd.default.device = 21
 
 
 

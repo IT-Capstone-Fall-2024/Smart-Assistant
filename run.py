@@ -21,10 +21,12 @@ def splitAndID():
     if ("light" in splitList) or ("lights" in splitList):
         module = "light"
         print("light")
+        modules.lights(splitList)
     if ("temperature" in splitList) or ("temp" in splitList):
         module = "temp"
     if ("door" in splitList) or ("lock" in splitList):
         module = "lock"
+        modules.lock(splitList)
     if ("weather" in splitList):
         module = "weather"
         getWeather()
