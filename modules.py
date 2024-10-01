@@ -11,14 +11,16 @@ client = mqtt.Client(client_id="", userdata=None, protocol=mqtt.MQTTv5)
 client.connect(broker, 1883)
 # client.publish(topic, "led", qos=1) # Testing connection
 
+# Helper method for modules, compares list to module list and returns what is in the list
 def compare(list, moduleList):
-    selected
+    selected = ""
     mSet = set(moduleList)
     for w in list:
         if w in mSet:
             selected = w
     return selected
 
+# Light module 
 def lights(list):
     global topic, message
     lightList = ["1", "2", "3", "4"] # can change to be however many options
@@ -31,6 +33,7 @@ def lights(list):
     message = state + color
     client.publish(topic, message, qos=1)
 
+# Lock module
 def lock(list):
     global topic, message
     doorList = ["front", "back"]
