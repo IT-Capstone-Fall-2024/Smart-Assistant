@@ -11,7 +11,7 @@ import wavio as wv
 # Add support for website mic integration
 #   could be with a continuous listener?
 #       would listen for peachy and send out response to indicate listening
-# Actually get LLM 
+# Actually get LLM
 
 # This just grabs the query right now, could use it here for changing purposes
 #   such as tell for smart home or whatever
@@ -19,12 +19,12 @@ import wavio as wv
 
 # See what stuff has cli/server transmit
 
-def windows_transcribe():
+# def windows_transcribe():
     # Works on Windows, can't get to work on Linux
-    mic = WhisperMic()
-    query = mic.listen()
-    print(query)
-    return query
+#    mic = WhisperMic()
+#    query = mic.listen()
+#    print(query)
+#    return query
 
 
 # For Linux
@@ -33,7 +33,7 @@ print(sd.query_devices())
 # Variables
 freq = 44100
 duration = 5
-sd.default.device = 21
+sd.default.device = 1
 
 
 
@@ -55,3 +55,5 @@ def linux_transcribe():
     result = model.transcribe("testing.wav")
     print(result["text"])
     return result["text"]
+linux_transcribe()
+
