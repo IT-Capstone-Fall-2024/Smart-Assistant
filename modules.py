@@ -1,6 +1,6 @@
 import paho.mqtt.client as mqtt
 
-broker = "10.42.0.1"
+broker = "192.168.50.233"
 port = 1883
 global topic, message
 # username = 'emqx'
@@ -30,7 +30,7 @@ def lights(list):
     number = compare(list, colorList)
     state = compare(list, stateList)
     topic = "light" + number
-    message = state + color
+    message = state + " " + color
     client.publish(topic, message, qos=1)
 
 # Lock module
