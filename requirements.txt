@@ -1,7 +1,5 @@
 whisper
-whisper-mic
 setuptools
 wavio
 sounddevice
-tts
 paho-mqtt
