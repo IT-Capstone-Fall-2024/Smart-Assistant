@@ -20,10 +20,10 @@ def compare(list, moduleList):
             selected = w
     return selected
 
-# Light module 
+# Light module
 def lights(list):
     global topic, message
-    lightList = ["1", "2", "3", "4"] # can change to be however many options
+    lightList = ["one", "two", "three", "four"] # can change to be however many options
     colorList = ["red", "orange", "blue", "purple", "yellow", "green", "white"]
     stateList = ["on", "off"]
     color = compare(list, lightList)
@@ -31,6 +31,7 @@ def lights(list):
     state = compare(list, stateList)
     topic = "light" + number
     message = state + color
+    println(topic + " " + message)
     client.publish(topic, message, qos=1)
 
 # Lock module
@@ -41,6 +42,6 @@ def lock(list):
     door = compare(list, doorList)
     state = compare(list, stateList)
     topic = door + "door"
-    message = state 
+    message = state
     client.publish(topic, message, qos=1)
 

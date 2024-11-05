@@ -55,5 +55,4 @@ def linux_transcribe():
     result = model.transcribe("testing.wav")
     print(result["text"])
     return result["text"]
-linux_transcribe()
 

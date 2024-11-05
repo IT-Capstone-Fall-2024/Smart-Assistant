@@ -1,7 +1,5 @@
 import transcribe
 import modules
-import python_weather
-import asyncio
 import os
 import paho.mqtt.client as mqtt
 
@@ -12,7 +10,7 @@ global query, splitList, module
 
 # Runs function from transcribe.py to get query
 def get_query():
-    global query 
+    global query
     query = transcribe.linux_transcribe()
 
 # Splits and Identifies the module from the qery
@@ -30,7 +28,7 @@ def splitAndID():
     if ("weather" in splitList):
         module = "weather"
         getWeather()
-    
+
 
 # async def getWeather():
 #     async with python_weather.Client(unit=python_weather.IMPERIAL) as client:
