@@ -94,3 +94,5 @@
     2. Print Module (debugging/testing)
     3. Run Module 
 
+# Links
+https://github.com/coqui-ai/STT/issues/2028#issuecomment-1465025097

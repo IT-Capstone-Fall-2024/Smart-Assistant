@@ -1,10 +1,8 @@
 import paho.mqtt.client as mqtt
 
-broker = "192.168.50.233"
+broker = "192.168.90.234"
 port = 1883
 global topic, message
-# username = 'emqx'
-# password = 'public'
 
 
 client = mqtt.Client(client_id="", userdata=None, protocol=mqtt.MQTTv5)

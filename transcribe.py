@@ -37,9 +37,7 @@ sd.default.device = 1
 
 
 
-def linux_transcribe():
-    # Init AI
-    model = whisper.load_model("base")
+def linux_transcribe(model):
 
     # Getting Audio
     recording = sd.rec(int(duration * freq), samplerate=None, channels=2)
