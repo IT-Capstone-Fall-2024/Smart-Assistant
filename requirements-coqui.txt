@@ -1,0 +1,7 @@
+setuptools
+wavio
+sounddevice
+paho-mqtt
+coqui-stt-model-manager==0.0.21
+numpy==1.26.4
+whisper

@@ -1,0 +1,6 @@
+setuptools
+wavio
+sounddevice
+paho-mqtt
+numpy
+whisper

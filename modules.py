@@ -1,10 +1,8 @@
 import paho.mqtt.client as mqtt
 
-broker = "192.168.50.233"
+broker = "192.168.90.234"
 port = 1883
 global topic, message
-# username = 'emqx'
-# password = 'public'
 
 
 client = mqtt.Client(client_id="", userdata=None, protocol=mqtt.MQTTv5)
@@ -20,28 +18,54 @@ def compare(list, moduleList):
             selected = w
     return selected
 
+def numberFix(number):
+    if number == "one":
+        return "1"
+    if number == "two":
+        return "2"
+    if number == "three":
+        return "3"
+    if number == "four":
+        return "4"
+    return number
+
 # Light module
 def lights(list):
     global topic, message
-    lightList = ["one", "two", "three", "four"] # can change to be however many options
+    lightList = ["one", "1", "two", "2", "three", "3", "four", "4"] # can change to be however many options
     colorList = ["red", "orange", "blue", "purple", "yellow", "green", "white"]
     stateList = ["on", "off"]
-    color = compare(list, lightList)
-    number = compare(list, colorList)
+    color = compare(list, colorList)
+    number = compare(list, lightList)
     state = compare(list, stateList)
-    topic = "light" + number
+    topic = "light/" + number
+    # Debug
+    number = numberFix(number)
+    print("Color: " + color + " Number: " + number + " State: " + state)
     message = state + " " + color
-    println(topic + " " + message)
+    print("Topic: " + topic + " Message: " + message)
     client.publish(topic, message, qos=1)
 
 # Lock module
 def lock(list):
     global topic, message
-    doorList = ["front", "back"]
+    doorList = ["one", "1", "two", "2", "three", "3", "four", "4"]
     stateList = ["lock", "unlock"]
     door = compare(list, doorList)
+    door = numberFix(door)
     state = compare(list, stateList)
-    topic = door + "door"
+    topic =  "lock/" + door
     message = state
+    # Debug
+    print("Topic: " + topic + " Message: " + message)
     client.publish(topic, message, qos=1)
 
+# Camera module
+def camera(list):
+    global topic, message
+    cameraList = ["one", "1", "two", "2"]
+    camera = compare(list, cameraList)
+    camera = numberFix(camera)
+    topic = "camera/" + camera
+    message = "camera"
+    client.publish(topic, message, qos=1)

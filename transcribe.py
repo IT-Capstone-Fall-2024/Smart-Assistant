@@ -5,7 +5,7 @@
 import whisper
 import sounddevice as sd
 import wavio as wv
-
+from whisper.tokenizer import get_tokenizer
 # This is just for grabbing the message, may need to modify for personal website and such.
 # Add support for smart home when needed
 # Add support for website mic integration
@@ -29,20 +29,21 @@ import wavio as wv
 
 # For Linux
 
-print(sd.query_devices())
 # Variables
 freq = 44100
 duration = 5
 sd.default.device = 1
 
+tokenizer = get_tokenizer(multilingual=False)  # use multilingual=True if using multilingual model
+number_tokens = [
+    i
+    for i in range(tokenizer.eot)
+    if all(c in "0123456789" for c in tokenizer.decode([i]).removeprefix(" "))
+]
 
-
-def linux_transcribe():
-    # Init AI
-    model = whisper.load_model("base")
-
+def linux_transcribe(model):
     # Getting Audio
-    recording = sd.rec(int(duration * freq), samplerate=None, channels=2)
+    recording = sd.rec(int(duration * freq), samplerate=None, channels=1)
     print("Recording")
     sd.wait()
 
@@ -52,7 +53,8 @@ def linux_transcribe():
 
     # Transcribing file to text
 
-    result = model.transcribe("testing.wav")
-    print(result["text"])
-    return result["text"]
+    result = model.transcribe("testing.wav", suppress_tokens=[-1] + number_tokens, language="en", fp16=False)
+    result = (result["text"]).lower()
+    print(result)
+    return result
 
