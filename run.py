@@ -12,7 +12,11 @@ subTopic = "assist/listen"
 
 # Connects MQTT Client
 client = mqtt.Client(client_id="", userdata=None, protocol=mqtt.MQTTv5)
+<<<<<<< HEAD
 client.connect(broker, port)
+=======
+client.connect(broker, 1883)
+>>>>>>> 4cffdb015f4bf285ea33e6515c14d481f628552f
 
 # Global Variables
 global module
