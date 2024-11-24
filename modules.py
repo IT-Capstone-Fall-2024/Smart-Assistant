@@ -38,9 +38,9 @@ def lights(list):
     color = compare(list, colorList)
     number = compare(list, lightList)
     state = compare(list, stateList)
+    number = numberFix(number)
     topic = "light/" + number
     # Debug
-    number = numberFix(number)
     print("Color: " + color + " Number: " + number + " State: " + state)
     message = state + " " + color
     print("Topic: " + topic + " Message: " + message)

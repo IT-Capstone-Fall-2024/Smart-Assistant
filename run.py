@@ -12,11 +12,7 @@ subTopic = "assist/listen"
 
 # Connects MQTT Client
 client = mqtt.Client(client_id="", userdata=None, protocol=mqtt.MQTTv5)
-<<<<<<< HEAD
 client.connect(broker, port)
-=======
-client.connect(broker, 1883)
->>>>>>> 4cffdb015f4bf285ea33e6515c14d481f628552f
 
 # Global Variables
 global module
@@ -36,15 +32,10 @@ def splitAndID(query):
     global module
     splitList = query.split()
     if ("light" in splitList) or ("lights" in splitList) or ("like" in splitList) or ("likes" in splitList):
-        module = "light"
         modules.lights(splitList)
-    if ("temperature" in splitList) or ("temp" in splitList):
-        module = "temp"
     if ("door" in splitList) or ("lock" in splitList):
-        module = "lock"
         modules.lock(splitList)
     if ("camera" in splitList) or ("scan" in splitList):
-        module = "recognze"
         modules.camera(splitList)
 
 # Runs when MQTT recieves a mesage from subscribed topic
